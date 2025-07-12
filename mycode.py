@@ -13,5 +13,5 @@ class MyModel:
     
     def forget_gate(self, h_prev, x_t):
         concat_vector = np.vstack([h_prev, x_t])
-        
+        value = (self.w_f @ concat_vector) + self.b_f
         f_t = self.sigmoid()
