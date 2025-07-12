@@ -73,8 +73,24 @@ class MyModel:
 
  #===================================================   
 class MyModel2:
-    def __init__(self, num_col_of_h_t):
-        self.weight = np.zeros((num_col_of_h_t, 1))
+    def __init__(self, feature_matrix, hidden_layer):
+        self.weight = np.zeros((hidden_layer, 1))
+        self.feature_matrix = feature_matrix
     
-    def 
-        
+    def initialize(self, weight = None):
+        if weight is None:
+            weight = self.weight
+        else:
+            self.weight = weight
+    def predict(self, x, y):
+        A = self.feature_matrix
+        z = A @ self.weight
+        pred = self.activate(z)
+        return pred
+    
+    def activate(self, x):
+        return 1 / (1 + np.exp(-x))
+    
+    def update(self, weight):
+        self.weight = weight
+
