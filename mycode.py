@@ -50,9 +50,14 @@ class MyModel:
         o_t = self.sigmoid(value)
         return o_t
 
-        
-
-    def hidden_state(self):
-        h_t = self.output_gate() * np.tanh(self.candidate_memory())
+    def hidden_state(self, c_t):
+        h_t = self.output_gate() * np.tanh(c_t)
         return h_t
+    
+    def forward(self, c_prev):
+        self.concat_vector
+        c_t = self.cell_state_update(c_prev)
+        h_t = self.hidden_state(c_t)
+        return h_t, c_t
+
     
