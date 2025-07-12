@@ -7,7 +7,9 @@ class Embedding:
         self.event_size = event_size
         self.embedding_dim = embedding_dim
         self.embedding_matrix = np.random.randn(event_size, embedding_dim) * 0.01
-        pass
+    
+    def forward(self, input_seq):
+        return self.embedding_matrix[input_seq]
 
 
 class MyModel:
