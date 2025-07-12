@@ -65,8 +65,8 @@ class MyModel:
         h_t = self.output_gate() * np.tanh(c_t)
         return h_t
     
-    def forward(self, c_prev):
-        self.concat_vector
+    def forward(self, h_prev, x_t , c_prev):
+        self.concat_vector(h_prev, x_t)
         c_t = self.cell_state_update(c_prev)
         h_t = self.hidden_state(c_t)
         return h_t, c_t
