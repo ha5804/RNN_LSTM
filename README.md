@@ -1,6 +1,9 @@
 # RNN_LSTM
 
-## ** 1.Model **
+## **(1)Model**
+--- init:
+
+
 
 
 
