@@ -16,3 +16,6 @@ class MyModel:
         value = (self.w_f @ concat_vector) + self.b_f
         f_t = self.sigmoid(value)
         return f_t
+    
+    def input_gate(self):
+        
