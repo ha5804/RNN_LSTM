@@ -1,8 +1,9 @@
 # RNN_LSTM
 
-## **(1)Model**
---- 
-init:
+## **Model**
+
+ - init - each gate
+
 
 
 

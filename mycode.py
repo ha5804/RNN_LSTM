@@ -34,14 +34,25 @@ class MyModel:
     
     def candidate_memory(self):
         value = (self.w_c @ self.concat_vector) + self.b_c
-        c_t = np.tanh(value)
+        c_t_hat = np.tanh(value)
+        return c_t_hat
+    
+
+    def cell_state_update(self,c_prev):
+        c_t_hat = self.candidate_memory()
+        f_t = self.forget_gate()
+        i_t = self.input_gate()
+        c_t = (f_t * c_prev) + (i_t * c_t_hat)
         return c_t
     
-    def ouput_gate(self):
+    def output_gate(self):
         value = (self.w_o @ self.concat_vector) + self.b_o
         o_t = self.sigmoid(value)
         return o_t
 
+        
+
     def hidden_state(self):
-        h_t = self.ouput_gate * np.tanh(self.candidate_memory)
+        h_t = self.output_gate() * np.tanh(self.candidate_memory())
         return h_t
+    
