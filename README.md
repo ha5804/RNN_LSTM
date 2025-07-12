@@ -1,5 +1,6 @@
 # RNN_LSTM
 
-### Element
+## **Model**
 
-- x_t : 현재 시점 입력
+
+
