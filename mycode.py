@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class MyModel:
-    def __init__(self, w_f, b_f, w_i, b_i, w_c, b_c):
+    def __init__(self, w_f, b_f, w_i, b_i, w_c, b_c, w_o, b_o):
 
         self.w_f = w_f
         self.b_f = b_f
@@ -10,6 +10,8 @@ class MyModel:
         self.b_i = b_i
         self.w_c = w_c
         self.b_c = b_c
+        self.w_o = w_o
+        self.b_o = b_o
         self.concat_vector = None
         pass
     
@@ -34,4 +36,12 @@ class MyModel:
         value = (self.w_c @ self.concat_vector) + self.b_c
         c_t = np.tanh(value)
         return c_t
+    
+    def ouput_gate(self):
+        value = (self.w_o @ self.concat_vector) + self.b_o
+        o_t = self.sigmoid(value)
+        return o_t
 
+    def hidden_state(self):
+        h_t = self.ouput_gate * np.tanh(self.candidate_memory)
+        return h_t
