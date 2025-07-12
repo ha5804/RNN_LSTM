@@ -2,12 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class MyModel:
-    def __init__(self, w_f, b_f, w_i, b_i):
+    def __init__(self, w_f, b_f, w_i, b_i, w_c, b_c):
 
         self.w_f = w_f
         self.b_f = b_f
         self.w_i = w_i
         self.b_i = b_i
+        self.w_c = w_c
+        self.b_c = b_c
         self.concat_vector = None
         pass
     
@@ -16,6 +18,7 @@ class MyModel:
         
     def sigmoid(self, x):
         return 1 / (1 + np.exp(-x))
+    
     
     def forget_gate(self):
         value = (self.w_f @ self.concat_vector) + self.b_f
@@ -26,4 +29,9 @@ class MyModel:
         value = (self.w_i @ self.concat_vector) + self.b_i
         i_t = self.sigmoid(value)
         return i_t
+    
+    def candidate_memory(self):
+        value = (self.w_c @ self.concat_vector) + self.b_c
+        c_t = np.tanh(value)
+        return c_t
 
