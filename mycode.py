@@ -2,10 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class MyModel:
-    def __init__(self, w_f, b_f):
+    def __init__(self, w_f, b_f, w_i, b_i):
 
         self.w_f = w_f
         self.b_f = b_f
+        self.w_i = w_i
+        self.b_i = b_i
         self.concat_vector = None
         pass
     
@@ -21,5 +23,7 @@ class MyModel:
         return f_t
     
     def input_gate(self):
-        self.concat_vector
+        value = (self.w_i @ self.concat_vector) + self.b_i
+        i_t = self.sigmoid(value)
+        return i_t
 
