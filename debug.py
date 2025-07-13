@@ -141,16 +141,16 @@ class log_temp:
         self.event_ids_encoded = encoder.fit_transform(self.get_event_ids())
     
     def make_seq_list(self):
-        X = []
-        y = []
+        input_sequence = []
+        true_label = []
 
         for i in range(len(self.event_ids_encoded) - self.seq_len):
-            X.append(self.event_ids_encoded[i:i+self.seq_len])   
-            y.append(self.event_ids_encoded[i+self.seq_len])     
+            input_sequence.append(self.event_ids_encoded[i:i+self.seq_len])   
+            true_label.append(self.event_ids_encoded[i+self.seq_len])     
 
-        X = np.array(X)  
-        y = np.array(y) 
-        return X , y
+        input_sequence = np.array(X)  
+        true_label = np.array(y) 
+        return input_sequence , true_label
 
 
 model = MyModel()
