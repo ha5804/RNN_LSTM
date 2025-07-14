@@ -13,3 +13,12 @@ class autoencoder:
     def encode(self, x):
         z = self.W_enc @ x + self.b_enc
         return np.tanh(z)
+        #W_enc.shape = (32, 32) x.shape = (32, 1) z.shape(32,1)
+    
+    def decode(self, z):
+        x_hat = self.W_dec @ z + self.b_dec
+        return x_hat
+    
+    def cal_loss(self, x, x_hat):
+        return np.mean((x- x_hat) ** 2)
+    
