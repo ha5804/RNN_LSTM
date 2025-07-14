@@ -9,3 +9,7 @@ class autoencoder:
 
         self.W_dec = np.random.randn(input_size, hidden_size) * 0.01
         self.b_dec = np.zeros((input_size, 1))
+
+    def encode(self, x):
+        z = self.W_enc @ x + self.b_enc
+        return np.tanh(z)
