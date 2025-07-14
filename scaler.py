@@ -1,6 +1,6 @@
 import numpy as np
 
-class scaler:
+class Scaler:
     def __init__(self):
         self.mean = None
         self.std = None

@@ -55,7 +55,7 @@ class Autoencoder:
             loss = self.cal_loss(row, x_hat)
             self.train_mse_list.append(loss)
         
-        self.threshold = np.mean(self.train_mse_list) + 0.5 * np.std(self.train_mse_list)
+        self.threshold = np.mean(self.train_mse_list) + 3 * np.std(self.train_mse_list)
 
     def get_threshold(self):
         return self.threshold
