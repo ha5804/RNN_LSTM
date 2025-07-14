@@ -11,6 +11,9 @@ class log_temp:
         self.path = path
         self.event_ids_encoded = None
         pass
+
+    def log_label(self):
+        
         
     def get_event_ids(self):
         event_ids = []
@@ -37,3 +40,5 @@ class log_temp:
         X = np.array(X)  
         y = np.array(y) 
         return X , y
+
+
