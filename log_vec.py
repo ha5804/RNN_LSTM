@@ -53,6 +53,22 @@ class log_temp:
         X = np.array(X)  
         y = np.array(y) 
         return X , y
+    
+    def make_test_seq_list(self):
+        X = []
+        y = []
+        labels = self.log_label()
+        for i in range(len(self.event_ids_encoded) - self.seq_len):
+            x_seq = self.event_ids_encoded[i:i+self.seq_len]
+            y_label = self.event_ids_encoded[i+self.seq_len]
+            x_labels = labels[i:i+self.seq_len]     
+
+            X.append(x_seq)
+            y.append(y_label)
+
+        X = np.array(X)  
+        y = np.array(y) 
+        return X , y
 
 #===================================================
 class Embedding:
