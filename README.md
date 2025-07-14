@@ -33,7 +33,15 @@
 
 (3)procedure
 
-- Train the autoencoder on LSTM-encoded normal sequences. -> For each test sequence, encode it using LSTM and input it into the autoencoder. -> Measure the reconstruction error (MSE) between the original and reconstructed input.-> Compare the error to a threshold (learned from training) to determine if the input is normal or abnormal.
+- 
+
+Train the autoencoder on LSTM-encoded normal sequences.
+
+-> For each test sequence, encode it using LSTM and input it into the autoencoder. 
+
+-> Measure the reconstruction error (MSE) between the original and reconstructed input.
+
+-> Compare the error to a threshold (learned from training) to determine if the input is normal or abnormal.
 
 
 
