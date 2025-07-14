@@ -48,7 +48,6 @@ class log_temp:
         if all(l == 0 for l in x_labels):
             X.append(x_seq)
             y.append(y_label)
-
             
         X = np.array(X)  
         y = np.array(y) 
