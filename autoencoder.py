@@ -1,6 +1,6 @@
 import numpy as np
 
-class autoencoder:
+class Autoencoder:
     def __init__(self, input_size, hidden_size):
         #input_size == col of feature_matrix == dim of lstm hidden_size
         #hidden_size == user
