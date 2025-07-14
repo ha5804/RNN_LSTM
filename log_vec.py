@@ -37,7 +37,7 @@ class log_temp:
         self.event_ids_encoded = encoder.fit_transform(self.get_event_ids())
         return self.event_ids_encoded
     
-    def make_seq_list(self):
+    def make_train_seq_list(self):
         X = []
         y = []
         labels = self.log_label()

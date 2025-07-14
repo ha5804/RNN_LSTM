@@ -57,6 +57,9 @@ class Autoencoder:
         
         self.threshold = np.mean(self.train_mse_list) + 3 * np.std(self.train_mse_list)
 
+    def get_threshold(self):
+        return self.threshold
+
     def predict(self, new_x):
         z = self.encode(new_x)
         x_hat = self.decode(z)
