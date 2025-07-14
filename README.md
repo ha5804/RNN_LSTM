@@ -18,8 +18,7 @@
 - lstm is filtering input_data as importance
     (lstm have own standards)
 
-
-
+---
 
 ## Autoencoder
 
