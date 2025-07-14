@@ -66,8 +66,8 @@ class Autoencoder:
         new_loss = self.cal_loss(new_x , x_hat)
 
         if new_loss > self.threshold:
-            return "abnormal"
+            return new_loss, "abnormal"
         else:
-            return "normal"
+            return new_loss, "normal"
         
 
