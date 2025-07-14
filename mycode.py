@@ -61,41 +61,7 @@ class LSTM_CELL:
         h_t = self.hidden_state(c_t)
         return h_t, c_t
 
- #===================================================   
-class MyModel2:
-    def __init__(self, feature_matrix, hidden_layer):
-        self.feature_matrix = feature_matrix  # shape: (N, hidden_size)
-        self.weight = np.zeros((hidden_layer, 1))  # shape: (hidden_size, 1)
 
-    def initialize(self, weight=None):
-        if weight is not None:
-            self.weight = weight
-        else:
-            self.weight = np.zeros_like(self.weight)
-
-    def activate(self, x):
-        return 1 / (1 + np.exp(-x))  
-
-    def predict(self):
-        z = self.feature_matrix @ self.weight  
-        return self.activate(z)  
-
-    def update(self, weight):
-        self.weight = weight
-
-    def compute_loss(self, y_true):
-        y_pred = self.predict()
-        loss = -np.mean(y_true * np.log(y_pred + 1e-8) + (1 - y_true) * np.log(1 - y_pred + 1e-8))
-        return loss
-
-    def train(self, y_true, lr=0.01, epochs=100):
-        m = y_true.shape[0]
-        y_true = y_true.reshape(-1, 1)
-
-        for i in range(epochs):
-            y_pred = self.predict()
-            grad = (self.feature_matrix.T @ (y_pred - y_true)) / m
-            self.weight -= lr * grad
 
 
 
