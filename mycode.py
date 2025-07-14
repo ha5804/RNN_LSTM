@@ -2,17 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #===================================================
-class Embedding:
-    def __init__(self, event_size, embedding_dim):
-        self.event_size = event_size
-        self.embedding_dim = embedding_dim
-        self.embedding_matrix = np.random.randn(event_size, embedding_dim) * 0.01
-    
-    def forward(self, input_seq):
-        return self.embedding_matrix[input_seq]
-
-#===================================================
-class MyModel:
+class LSTM_CELL:
     def __init__(self, w_f, b_f, w_i, b_i, w_c, b_c, w_o, b_o):
 
         self.w_f = w_f

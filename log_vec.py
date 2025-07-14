@@ -48,8 +48,17 @@ class log_temp:
         if all(l == 0 for l in x_labels):
             X.append(x_seq)
             y.append(y_label)
-            
+
         X = np.array(X)  
         y = np.array(y) 
         return X , y
 
+#===================================================
+class Embedding:
+    def __init__(self, event_size, embedding_dim):
+        self.event_size = event_size
+        self.embedding_dim = embedding_dim
+        self.embedding_matrix = np.random.randn(event_size, embedding_dim) * 0.01
+    
+    def forward(self, input_seq):
+        return self.embedding_matrix[input_seq]
