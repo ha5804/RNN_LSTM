@@ -39,11 +39,17 @@ class log_temp:
     def make_seq_list(self):
         X = []
         y = []
-
+        labels = self.log_label()
         for i in range(len(self.event_ids_encoded) - self.seq_len):
-            X.append(self.event_ids_encoded[i:i+self.seq_len])   
-            y.append(self.event_ids_encoded[i+self.seq_len])     
+            x_seq = self.event_ids_encoded[i:i+self.seq_len]
+            y_label = self.event_ids_encoded[i+self.seq_len]
+            x_labels = labels[i:i+self.seq_len]     
 
+        if all(l == 0 for l in x_labels):
+            X.append(x_seq)
+            y.append(y_label)
+
+            
         X = np.array(X)  
         y = np.array(y) 
         return X , y
