@@ -9,7 +9,7 @@ class log_temp:
         self.template_miner = TemplateMiner(config = self.config)
         self.seq_len = seq_len
         self.path = path
-        self.event_ids_encoded = None
+        self.event_ids_encoded = self.encode_event_ids()
         pass
 
     def log_label(self):
@@ -35,6 +35,7 @@ class log_temp:
     def encode_event_ids(self):
         encoder = LabelEncoder()
         self.event_ids_encoded = encoder.fit_transform(self.get_event_ids())
+        return self.event_ids_encoded
     
     def make_seq_list(self):
         X = []
@@ -45,9 +46,9 @@ class log_temp:
             y_label = self.event_ids_encoded[i+self.seq_len]
             x_labels = labels[i:i+self.seq_len]     
 
-        if all(l == 0 for l in x_labels):
-            X.append(x_seq)
-            y.append(y_label)
+            if all(l == 0 for l in x_labels):
+                X.append(x_seq)
+                y.append(y_label)
 
         X = np.array(X)  
         y = np.array(y) 
@@ -56,9 +57,9 @@ class log_temp:
 #===================================================
 class Embedding:
     def __init__(self, event_size, embedding_dim):
-        self.event_size = event_size
+        self.event_size = event_size 
         self.embedding_dim = embedding_dim
         self.embedding_matrix = np.random.randn(event_size, embedding_dim) * 0.01
     
     def forward(self, input_seq):
-        return self.embedding_matrix[input_seq]
+        return self.embedding_matrix[input_seq] 
