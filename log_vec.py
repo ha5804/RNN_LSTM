@@ -13,8 +13,15 @@ class log_temp:
         pass
 
     def log_label(self):
-        
-        
+        label = []
+        with open(self.path, "r") as f:
+            for line in f:
+                if any(keyword in line for keyword in ['WARN', 'ERROR', "FATAL"]):
+                    label.append(1)
+                else:
+                    label.append(0)
+        return label
+            
     def get_event_ids(self):
         event_ids = []
 
@@ -40,5 +47,4 @@ class log_temp:
         X = np.array(X)  
         y = np.array(y) 
         return X , y
-
 
