@@ -38,7 +38,7 @@ class DataProcess:
         return self.event_ids_encoded
     
     def make_train_seq_list(self):
-        X = []
+        x = []
         y = []
         labels = self.log_label()
         for i in range(len(self.event_ids_encoded) - self.seq_len):
@@ -47,15 +47,15 @@ class DataProcess:
             x_labels = labels[i:i+self.seq_len]     
 
             if all(l == 0 for l in x_labels):
-                X.append(x_seq)
+                x.append(x_seq)
                 y.append(y_label)
 
-        X = np.array(X)  
+        x = np.array(x)  
         y = np.array(y) 
-        return X , y
+        return x , y
     
     def make_test_seq_list(self):
-        X = []
+        x = []
         y = []
         labels = self.log_label()
         for i in range(len(self.event_ids_encoded) - self.seq_len):
@@ -63,29 +63,13 @@ class DataProcess:
             y_label = self.event_ids_encoded[i+self.seq_len]
             x_labels = labels[i:i+self.seq_len]     
 
-            X.append(x_seq)
+            x.append(x_seq)
             y.append(y_label)
 
-        X = np.array(X)  
+        x = np.array(x)  
         y = np.array(y) 
-        return X , y
+        return x , y
     
-    def make_test_seq_list_2(self):
-        id = self.get_event_ids()
-        X = []
-        y = []
-        labels = self.log_label()
-        for i in range(len(id) - self.seq_len):
-            x_seq = id[i:i+self.seq_len]
-            y_label = id[i+self.seq_len]
-            x_labels = labels[i:i+self.seq_len]     
-
-            X.append(x_seq)
-            y.append(y_label)
-
-        X = np.array(X)  
-        y = np.array(y) 
-        return X , y
     
     #debug==============================================
     def count_warning_sequences(self, labels, seq_len = 10):
