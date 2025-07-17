@@ -11,7 +11,7 @@ class log_temp:
         self.path = path
         self.event_ids_encoded = self.encode_event_ids()
         pass
-
+    
     def log_label(self):
         label = []
         with open(self.path, "r") as f:
@@ -21,16 +21,6 @@ class log_temp:
                 else:
                     label.append(0)
         return label
-    
-    def count_warning_sequences(self, labels, seq_len = 10):
-        count = 0
-        waring_index = []
-        for i in range(len(labels) - seq_len):
-            window = labels[i: i+seq_len]
-            if any(l == 1 for l in window):
-                count += 1
-                waring_index.append(i)
-        return count, waring_index
     
     def get_event_ids(self):
         event_ids = []
@@ -79,6 +69,17 @@ class log_temp:
         X = np.array(X)  
         y = np.array(y) 
         return X , y
+    
+    #debug==============================================
+    def count_warning_sequences(self, labels, seq_len = 10):
+        count = 0
+        waring_index = []
+        for i in range(len(labels) - seq_len):
+            window = labels[i: i+seq_len]
+            if any(l == 1 for l in window):
+                count += 1
+                waring_index.append(i)
+        return count, waring_index
 
 #===================================================
 class Embedding:

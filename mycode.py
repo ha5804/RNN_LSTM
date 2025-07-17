@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 #===================================================
 class LSTM_CELL:
     def __init__(self, w_f, b_f, w_i, b_i, w_c, b_c, w_o, b_o):
-
         self.w_f = w_f
         self.b_f = b_f
         self.w_i = w_i
@@ -22,7 +21,6 @@ class LSTM_CELL:
     def sigmoid(self, x):
         return 1 / (1 + np.exp(-x))
     
-    
     def forget_gate(self):
         value = (self.w_f @ self.concat_vector) + self.b_f
         f_t = self.sigmoid(value)
@@ -38,7 +36,6 @@ class LSTM_CELL:
         c_t_hat = np.tanh(value)
         return c_t_hat
     
-
     def cell_state_update(self,c_prev):
         c_t_hat = self.candidate_memory()
         f_t = self.forget_gate()
